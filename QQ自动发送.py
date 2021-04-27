@@ -16,7 +16,7 @@ def get_name():
 def main():
     xiaoxi = get_msg()
     #窗口名字
-    name = "乐乐大宝贝"
+    name = get_name()
     #将测试消息复制到剪切板中
     w.OpenClipboard()
     w.EmptyClipboard()
