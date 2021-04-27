@@ -1,0 +1,35 @@
+import win32gui
+import win32con
+import win32clipboard as w
+
+n = 10
+
+def get_msg():
+    #发送的消息
+    msg = input("发送的消息:")
+    return msg
+
+def get_name():
+    name = input("发送给:")
+    return name
+
+def main():
+    xiaoxi = get_msg()
+    #窗口名字
+    name = "乐乐大宝贝"
+    #将测试消息复制到剪切板中
+    w.OpenClipboard()
+    w.EmptyClipboard()
+    w.SetClipboardData(win32con.CF_UNICODETEXT, xiaoxi)
+    w.CloseClipboard()
+    #获取窗口句柄
+    handle = win32gui.FindWindow(None, name)
+    #while 1==1:
+    for i in range(n):
+        #填充消息
+        win32gui.SendMessage(handle, 770, 0, 0)
+        #回车发送消息
+        win32gui.SendMessage(handle, win32con.WM_KEYDOWN, win32con.VK_RETURN, 0)
+
+if __name__ == "__main__":
+    main()
